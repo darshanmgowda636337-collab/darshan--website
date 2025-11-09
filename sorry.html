@@ -1,0 +1,152 @@
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darshan's Website</title>
+
+<style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: linear-gradient(120deg, #ffb347, #ffcc33);
+        overflow-x: hidden;
+    }
+
+    /* Home Page Section */
+    #home {
+        padding: 100px 20px;
+        display: block;
+        height: 100vh;
+        color: white;
+    }
+
+    h1 { font-size: 45px; }
+
+    .btn {
+        margin-top: 40px;
+        padding: 15px 30px;
+        background: #000;
+        color: white;
+        border-radius: 10px;
+        font-size: 20px;
+        text-decoration: none;
+        transition: 0.3s;
+        display: inline-block;
+    }
+
+    .btn:hover {
+        transform: scale(1.1);
+    }
+
+    /* Sorry Page Section */
+    #sorry {
+        display: none;
+        background-color: orange;
+        height: 100vh;
+        padding-top: 70px;
+        position: relative;
+    }
+
+    .card {
+        background: white;
+        width: 60%;
+        margin: auto;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        position: relative;
+        z-index: 10;
+    }
+
+    .card h2 { color: red; }
+
+    /* Falling flower animation */
+    .falling-flowers {
+        pointer-events:none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+    }
+
+    .falling-flowers span {
+        position: absolute;
+        top: -10%;
+        animation: fall linear infinite;
+        opacity: 0.9;
+    }
+
+    @keyframes fall {
+        0% { transform: translateY(0) rotate(0deg); }
+        100% { transform: translateY(110vh) rotate(360deg); }
+    }
+</style>
+</head>
+<body>
+
+<!-- HOME PAGE -->
+<section id="home">
+    <h1>Welcome to Darshan's Website</h1>
+    <p>Click the button below to open the apology page.</p>
+    <a class="btn" onclick="showSorry()">Go to Sorry Page</a>
+</section>
+
+<!-- SORRY PAGE -->
+<section id="sorry">
+    <div class="falling-flowers"></div>
+
+    <div class="card">
+        <h2>Dear Pavithra,</h2>
+        <p>I am truly sorry for using Nishy’s name.  
+           I regret my mistake and I did not mean to hurt you.
+           want to sincerely apologise for using Nishy's name in a way that involved you or
+ caused any discomfort. It was thoughtless of me to mention someone else's name
+ without considering how it might affect you, and I deeply regret that my actions caused
+ any pain or misunderstanding.
+ <p>
+ You are my sister and I respect you. I should have been more considerate and asked
+ before speaking. I am truly sorry for any upset I caused and for any embarrassment this
+ brought you.
+ Please forgive me. I promise to be more careful with my words in future and to always
+ keep your feelings and privacy in mind. I value our relationship and I want to make
+ things right between us.</p><br></p>
+        <p>Please forgive me.</p>
+        <h3>— Darshan</h3><br>
+        <a class="btn" onclick="showHome()">Back to Home</a>
+    </div>
+</section>
+
+<script>
+function showSorry() {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("sorry").style.display = "block";
+}
+
+function showHome() {
+    document.getElementById("home").style.display = "block";
+    document.getElementById("sorry").style.display = "none";
+}
+
+// Falling flowers animation
+document.addEventListener('DOMContentLoaded', function(){
+    const container = document.querySelector('.falling-flowers');
+    for(let i = 0; i < 40; i++){
+        const f = document.createElement('span');
+        f.textContent = "🌸";
+        f.style.left = Math.random()*100 + "%";
+        f.style.animationDuration = (4 + Math.random()*6) + "s";
+        f.style.fontSize = (20 + Math.random()*30) + "px";
+        container.appendChild(f);
+    }
+});
+</script>
+
+</body>
+</html>
